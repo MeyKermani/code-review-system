@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/repos/39bb2fc9-09a0-4ddf-a825-e1e91c1bf130" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/service-2-code-analysis/repos/10f0857f-dafd-4d1c-94ba-8a214aab969d" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/service-2-code-analysis/repos/15130d4b-d1cb-4cf4-830e-f1bf5b5b469f" vcs="Git" />
