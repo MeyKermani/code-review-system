@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel  # Import Pydantic for request validation
 from openai import OpenAI
+from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
@@ -39,13 +40,34 @@ async def analyze_function(request: AnalyzeRequest):
             messages=[
                 {
                     "role": "user",
-                    "content": """Check the following Python function and give a few suggestions
-                     ignore indentation and breaking things into multiple line:\n""" + function_code
+                    "content": """Check the following Python function and give 5 to 10 short and useful suggestions
+                     ignore indentation and breaking things into multiple line, the suggestions should be specific 
+                     strings and the strings should be in quotations and commas between each other and dont number them
+                      and dont add any other explanation:\n""" + function_code
                 }
             ],
-            max_tokens=200
+            max_tokens=300
         )
         result = json.loads(response.content)
-        return {"suggestions": result["choices"][0]["message"]["content"]}
+        output = result["choices"][0]["message"]["content"].replace('\n', '')
+        output1 = output.replace('\"', '').strip()
+        output2 = output1.split(',')
+        print(output2)
+        cleaned_suggestions = [s.strip() for s in output2]
+        final_suggestions = []
+        for suggestion in cleaned_suggestions:
+            if not suggestion.__contains__('.') and not suggestion.__contains__(')') and not suggestion.__contains__('(')\
+                    and len(suggestion) > 20:
+                final_suggestions.append(suggestion)
+
+        # output_dict = {
+        #     "suggestions": final_suggestions
+        # }
+        # print(output_dict)
+        # json_output = json.dumps(output_dict, indent=4)
+        #response_content = json.dumps({"suggestions": final_suggestions}, indent=4)
+      
+        return JSONResponse(content={"suggestions": final_suggestions})
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
