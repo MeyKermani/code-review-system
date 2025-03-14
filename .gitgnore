@@ -57,4 +57,3 @@ pip-selfcheck.json
 # Ignore compiled wheels
 *.whl
 
-.git/
