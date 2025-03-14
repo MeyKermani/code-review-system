@@ -66,11 +66,21 @@ curl --location 'http://127.0.0.1:8001/analyze' \
 --data ' {"function_code": "def add(a,b): return a+b"}'
 ```
 **Response**:
-
+```json
 {
-
-    "suggestions": "The function you provided is a simple and correct implementation of adding two numbers. However, there are a few suggestions to improve readability, maintainability, and robustness:\n\n### 1. **Add Type Hints**\n   - Adding type hints makes the function more readable and helps with static type checking tools like `mypy`.\n\n   ```python\n   def add(a: int, b: int) -> int:\n       return a + b\n   ```\n\n   If you want the function to handle floats as well:\n\n   ```python\n   from typing import Union\n\n   def add(a: Union[int, float], b: Union[int, float]) -> Union[int, float]:\n       return a + b\n   ```\n\n### 2. **Add a Docstring**\n   - Adding a docstring helps other developers (or your future self) understand what the function does.\n\n   ```python\n   def add(a: int, b: int) -> int:\n       \"\"\"Add two integers and return"
+    "suggestions": [
+        "Add type hints for parameters",
+        "Add type hints for the return value",
+        "Use docstring to describe the function",
+        "Use descriptive parameter names",
+        "Check for invalid inputs",
+        "Handle non-numeric inputs gracefully",
+        "Add unit tests for the function",
+        "Use consistent formatting",
+        "Make function name more descriptive if needed"
+    ]
 }
+```
 
 ### Service 2 Endpoints
 
