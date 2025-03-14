@@ -1,0 +1,61 @@
+# Byte-compiled / optimized / compiled Python files
+__pycache__/
+*.pyo
+
+# Virtual environment directory
+venv/
+env/
+
+# Jupyter Notebook checkpoints (if using notebooks)
+.ipynb_checkpoints/
+
+# Logs and debug files
+*.log
+*.sqlite3
+*.db
+
+# Cache files and directories
+*.cache
+*.pytest_cache/
+*.mypy_cache/
+.pytest_cache/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.DS_Store
+
+# Docker-related files
+docker-compose.override.yml
+*.pid
+*.tar
+
+# Coverage reports
+.coverage
+*.coverage
+htmlcov/
+
+# Python egg files
+*.egg-info/
+.eggs/
+
+# Test artifacts
+tests/__pycache__/
+
+
+# Ignore specific configuration files
+.env.local
+.env.development
+.env.production
+
+# Ignore Python virtual environment symlinks
+pip-selfcheck.json
+
+
+# Ignore compiled wheels
+*.whl
+
+*./repos/
+.git/

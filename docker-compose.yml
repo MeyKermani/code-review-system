@@ -1,0 +1,21 @@
+version: "3.8"  # Specify the Docker Compose version
+
+services:
+  service1:
+    build:
+      context: ./service-1-llm-service   # Path to Service 1's directory
+      dockerfile: Dockerfile  # Dockerfile name (default: Dockerfile)
+    container_name: service1_container
+    ports:
+      - "8001:8001"  # Map container port to host port
+  service2:
+    build:
+      context: ./service-2-code-analysis   # Path to Service 2's directory
+      dockerfile: Dockerfile  # Dockerfile name (default: Dockerfile)
+    container_name: service2_container
+    ports:
+      - "8002:8002"  # Map container port to host port
+    depends_on:
+      - service1
+    volumes:
+      - ./service-2-code-analysis/repos:/app/repos  # Mount the host folder to the container
